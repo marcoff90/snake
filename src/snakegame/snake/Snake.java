@@ -21,14 +21,55 @@ public class Snake {
       snakesBody.add(new BodyPart(objectSize));
     }
 
-    for (int i = snakesBody.size() - 1; i >= 0 ; i--) {   // adds starting coordinates to each body part
+    for (int i = 0; i < snakesBody.size(); i++) {    // adds starting coordinates to each body part
       snakesBody.get(i).setPositionX(i * objectSize);
     }
   }
 
-  public void move() {
-    for (int i = snakesBody.size() - 1; i >= 0 ; i--) {
+  public void move(int moveType) {
+
+    switch (moveType) {
+      case 1:
+        moveRight();
+        break;
+      case 2:
+        moveLeft();
+        break;
+      case 3:
+        moveDown();
+        break;
+      case 4:
+        moveUp();
+        break;
+    }
+
+  }
+
+  public void moveRight() {
+    for (int i = snakesBody.size() - 1; i >= 0; i--) {
       snakesBody.get(i).setPositionX(snakesBody.get(i).getPositionX() + objectSize);
+    }
+  }
+
+  public void moveUp() {
+    for (int i = snakesBody.size() - 1; i >= 0; i--) {
+      snakesBody.get(i).setPositionY(snakesBody.get(i).getPositionY() - objectSize);
+    }
+  }
+
+  public void moveDown() {
+    for (int i = snakesBody.size() - 1; i >= 0; i--) {
+        if (snakesBody.get(i).getPositionX() < snakesBody.get(snakesBody.size() - 1).getPositionX()) {
+          snakesBody.get(i).setPositionX(snakesBody.get(i).getPositionX() + objectSize);
+        } else {
+        snakesBody.get(i).setPositionY(snakesBody.get(i).getPositionY() + objectSize);
+      }
+    }
+  }
+
+  public void moveLeft() {
+    for (int i = snakesBody.size() - 1; i >= 0; i--) {
+      snakesBody.get(i).setPositionX(snakesBody.get(i).getPositionX() - objectSize);
     }
   }
 

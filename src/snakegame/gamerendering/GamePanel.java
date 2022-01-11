@@ -5,21 +5,25 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import snakegame.snake.Snake;
 
-public class GamePanel extends JPanel implements ActionListener{
+public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
   private static final int SCREEN_SIZE = 600;
   private Snake snake;
+
+  private int moveType;
 
   public GamePanel() {
     this.setBackground(Color.BLACK);
     this.setPreferredSize(new Dimension(SCREEN_SIZE, SCREEN_SIZE));
     this.setFocusable(true);
     this.snake = new Snake(20);
-    Timer timer = new Timer(75, this);
+    Timer timer = new Timer(1000, this);
     timer.start();
   }
 
@@ -39,7 +43,7 @@ public class GamePanel extends JPanel implements ActionListener{
   }
 
   private void drawSnake(Graphics graphics) {
-    for (int i = snake.getSnakesBody().size() - 1; i >= 0 ; i--) {
+    for (int i = 0; i < snake.getSnakesBody().size(); i++) {
       graphics.setColor(Color.GREEN);
       graphics.fillRect(snake.getSnakesBody().get(i).getPositionX(), snake.getSnakesBody().get(i).getPositionY(), 20, 20);
     }
@@ -47,7 +51,30 @@ public class GamePanel extends JPanel implements ActionListener{
 
   @Override
   public void actionPerformed(ActionEvent e) {
-    snake.move();
+    snake.moveDown();
     repaint();
+  }
+
+  @Override
+  public void keyTyped(KeyEvent e) {
+
+  }
+
+  @Override
+  public void keyPressed(KeyEvent e) {
+
+  }
+
+  @Override
+  public void keyReleased(KeyEvent e) {
+    if (e.getKeyCode() == KeyEvent.VK_UP) {
+      moveType = 4;
+    } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+      moveType = 3;
+    } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+      moveType = 1;
+    } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+      moveType = 2;
+    }
   }
 }
