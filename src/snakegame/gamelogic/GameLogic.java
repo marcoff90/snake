@@ -30,6 +30,7 @@ public class GameLogic {
     gameOver = false;
     score = 0;
   }
+
   public int getMoveDirection() {
 
     if (right) {
@@ -49,7 +50,7 @@ public class GameLogic {
       apple.generatePosition();
       snake.eatApple();
       score++;
-      delay-=10;
+      delay -= 10;
     }
   }
 
@@ -95,35 +96,35 @@ public class GameLogic {
     return delay;
   }
 
-  public void setRight(boolean right) {
-    this.right = right;
-  }
-
-  public void setLeft(boolean left) {
-    this.left = left;
-  }
-
-  public void setDown(boolean down) {
-    this.down = down;
-  }
-
-  public void setUp(boolean up) {
-    this.up = up;
-  }
-
   public boolean isRight() {
     return right;
+  }
+
+  public void setRight(boolean right) {
+    this.right = right;
   }
 
   public boolean isLeft() {
     return left;
   }
 
+  public void setLeft(boolean left) {
+    this.left = left;
+  }
+
   public boolean isDown() {
     return down;
   }
 
+  public void setDown(boolean down) {
+    this.down = down;
+  }
+
   public boolean isUp() {
     return up;
+  }
+
+  public void setUp(boolean up) {
+    this.up = up;
   }
 }

@@ -19,10 +19,10 @@ public class Apple {
   }
 
   public void generateListOfPoints(int screenWidth, int screenHeight, int objectSize) {
-    for (int i = 1; i < screenWidth/objectSize; i++) {  // the number of possible x/y positions is width/height divided by object size
-      xCoordinates.add(i*objectSize);         // adding object size * i to the list in order to generate a random position for the apple
+    for (int i = 1; i < screenWidth / objectSize; i++) {  // the number of possible x/y positions is width/height divided by object size
+      xCoordinates.add(i * objectSize);         // adding object size * i to the list in order to generate a random position for the apple
     }
-    for (int i = 3; i < screenHeight/objectSize; i++) {
+    for (int i = 3; i < screenHeight / objectSize; i++) {
       yCoordinates.add(i * objectSize);
     }
   }
